@@ -16,5 +16,4 @@ env = {
 }
 
 reload = True
-name = 'Django_project'
-
+name = 'Project_name'

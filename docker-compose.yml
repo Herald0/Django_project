@@ -1,6 +1,5 @@
 version: '3.9'
 
-
 services:
     nginx:
 # при падении будет стараться подняться
@@ -10,15 +9,16 @@ services:
 # слушает порт 8080
         expose:
           - 8080
-# мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost.
+# мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost. Убедись, что порт у тебя не занят.
         ports:
           - "80:8080"
+# монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
         volumes:
-            - ./Django_project/static:/srv/www/Django_project/Django_project/static
-            - ./Django_project/media:/srv/www/Django_project/Django_project/media
-            - ./Django_project/logs:/srv/www/Django_project/Django_project/logs
+            - ./Django_project/static:/srv/www/Django_project/static
+            - ./Django_project/media:/srv/www/Django_project/media
+            - ./Django_project/logs:/srv/www/Django_project/logs
             - ./docker/nginx:/etc/nginx/conf.d
-# nginx зависит от контейнера python. Т.е. python должен быть запущен первым
+# и nginx зависит от контейнера python. Т.е. python должен быть запущен первым
         depends_on:
             - python
     python:
@@ -29,10 +29,10 @@ services:
             dockerfile: docker/python/Dockerfile
 # монтируем директорию проекта
         volumes:
-            - ./Django_project:/srv/www/Django_project/Django_project
+            - ./Django_project:/srv/www/Django_project
         expose:
           - 8000
         ports:
-            - 8000:8000
+            - "8000:8000"
 # запускаем gunicorn
         command: "gunicorn -c gunicorn.py Django_project.wsgi"

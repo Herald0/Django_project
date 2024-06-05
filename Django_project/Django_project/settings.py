@@ -21,8 +21,6 @@ CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1", "http://0.0.0.0", "http://localhost"
 # Application definition
 
 INSTALLED_APPS = [
-    'daphne',
-    'channels',
     'main',
     'django.contrib.admin',
     'django.contrib.auth',
