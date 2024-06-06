@@ -23,3 +23,4 @@
 2024/06/05 10:54:03 [error] 22#22: *4 connect() failed (113: No route to host) while connecting to upstream, client: 172.19.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://172.19.0.4:8000/", host: "localhost"
 2024/06/05 18:26:41 [error] 20#20: *1 connect() failed (113: No route to host) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://172.20.0.2:8000/", host: "localhost"
 2024/06/05 18:26:44 [error] 20#20: *1 connect() failed (113: No route to host) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.20.0.2:8000/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2024/06/06 11:05:25 [error] 22#22: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://172.18.0.2:8000/", host: "localhost"
